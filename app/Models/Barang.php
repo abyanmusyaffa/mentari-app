@@ -18,16 +18,24 @@ class Barang extends Model
 
     public function kategoris(): BelongsTo
     {
-        return  $this->belongsTo(Kategori::class);
+        return  $this->belongsTo(Kategori::class, 'kategori_id');
     }
 
     public function satuans(): BelongsTo
     {
-        return  $this->belongsTo(Satuan::class);
+        return  $this->belongsTo(Satuan::class, 'satuan_id');
     }
 
-    public function penjulans(): HasMany
+    public function penjualans(): HasMany
     {
         return  $this->hasMany(Penjualan::class);
+    }
+
+    public function generateIdBarangs()
+    {
+        $lastCustomerId = $this->max('id');
+        $lastNumber = $lastCustomerId ? intval(substr($lastCustomerId, 2)) : 0;
+        $newNumber = str_pad($lastNumber + 1, 6, '0', STR_PAD_LEFT);
+        return 'B-' . $newNumber; // Prepend 'B-'
     }
 }

@@ -54,7 +54,9 @@ class PenjualanController extends Controller
         $inputTransaksi = Transaksi::create([
             'id' => $generateIdPenjualan,
             'pelanggan_id' => $inputPelanggan,
-            'nama_pelanggan' => $request->input('nama') ? $request->input('nama') : '' ,
+            'nama_pelanggan' => $request->input('nama') ?? '' ,
+            'hp_pelanggan' => $request->input('hp') ?? '' ,
+            'diskon' => $request->input('diskon') ?? null ,
             'metode' => $request->input('metode'),
             'status' => $request->input('submit') === 'bayar' ? 'Lunas' : 'Pending' ,
             'diterima' => $request->input('diterima'),

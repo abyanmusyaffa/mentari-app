@@ -18,7 +18,7 @@ class PelangganFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => fake()->unique()->regexify('P-\d{4}\d{5}'),
+            'id' => fake()->unique()->regexify('P-2407\d{5}'),
             'nama' => fake()->name(),
             'alamat' => fake()->address(),
             'hp' => fake()->phoneNumber(),

@@ -11,7 +11,7 @@ class Pesanan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'transaksi_id', 'pelanggan_id', 'status', 'waktu'];
+    protected $fillable = ['id', 'transaksi_id', 'nama_pelanggan', 'hp_pelanggan', 'status', 'waktu'];
     protected $keyType = 'string';
     public $incrementing = false;
 
@@ -22,7 +22,7 @@ class Pesanan extends Model
     
     public function detail_pesanans(): HasMany
     {
-        return  $this->hasMany(DetailPesanan::class);
+        return  $this->hasMany(DetailPesanan::class, 'pesanan_id');
     }
 
     public function generateIdPesanans()

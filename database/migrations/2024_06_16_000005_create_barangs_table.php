@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('nama');
-            $table->foreignId('kategori_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('satuan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('kategori_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignId('satuan_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->integer('harga');
             $table->integer('stok');
             $table->timestamps();

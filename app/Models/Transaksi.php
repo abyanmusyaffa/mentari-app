@@ -13,13 +13,13 @@ class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'pelanggan_id', 'nama_pelanggan', 'metode', 'status', 'diterima', 'kembali', 'total_diskon', 'grand_total'];
+    protected $fillable = ['id', 'pelanggan_id', 'nama_pelanggan','hp_pelanggan', 'diskon','metode', 'status', 'diterima', 'kembali', 'total_diskon', 'grand_total'];
     protected $keyType = 'string';
     public $incrementing = false;
 
     public function pelanggans(): BelongsTo
     {
-        return $this->belongsTo(Pelanggan::class);
+        return $this->belongsTo(Pelanggan::class, 'pelanggan_id', 'id');
     }
     
     public function penjualans(): HasMany
@@ -34,18 +34,23 @@ class Transaksi extends Model
     public function generateIdPenjualan()
     {
         $date = date('ymd');
-        $lastCustomerId = $this->max('id');
-        $lastNumber = $lastCustomerId ? intval(substr($lastCustomerId, -5)) : 0;
+        $lastPenjualanId = $this->where('id', 'like', 'TPJ-%')->max('id');
+        $lastNumber = $lastPenjualanId ? intval(substr($lastPenjualanId, -5)) : 0;
         $newNumber = str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
         return 'TPJ-' . $date . $newNumber;
     }
-
+    
     public function generateIdPesanan()
     {
         $date = date('ymd');
-        $lastCustomerId = $this->max('id');
-        $lastNumber = $lastCustomerId ? intval(substr($lastCustomerId, -5)) : 0;
+        $lastPesananId = $this->where('id', 'like', 'TPS-%')->max('id');
+        $lastNumber = $lastPesananId ? intval(substr($lastPesananId, -5)) : 0;
         $newNumber = str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
         return 'TPS-' . $date . $newNumber;
+    }
+
+    public function getMoneyFormatAttribute()
+    {
+        return 'Rp ' . number_format($this->jumlah, 0, ',', '.');
     }
 }

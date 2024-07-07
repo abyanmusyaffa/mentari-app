@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('transaksi_id');
             $table->foreign('transaksi_id')->references('id')->on('transaksis')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('barang_id');
-            $table->foreign('barang_id')->references('id')->on('barangs')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('barang_id')->nullable();
+            $table->foreign('barang_id')->references('id')->on('barangs')->nullOnDelete()->cascadeOnUpdate();
             $table->integer('jumlah');
             $table->integer('total_harga');
             $table->timestamps();

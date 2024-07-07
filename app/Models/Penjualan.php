@@ -19,6 +19,6 @@ class Penjualan extends Model
 
     public function barangs(): BelongsTo
     {
-        return  $this->belongsTo(Barang::class);
+        return  $this->belongsTo(Barang::class, 'barang_id');
     }
 }

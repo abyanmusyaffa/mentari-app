@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('pelanggan_id')->nullable();
-            $table->foreign('pelanggan_id')->references('id')->on('pelanggans')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('pelanggan_id')->references('id')->on('pelanggans')->nullOnDelete()->cascadeOnUpdate();
             $table->string('nama_pelanggan')->nullable();
+            $table->string('hp_pelanggan')->nullable();
+            $table->integer('diskon')->nullable();
             $table->string('metode');
             $table->string('status');
             $table->integer('diterima')->nullable();

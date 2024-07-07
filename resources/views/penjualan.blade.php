@@ -35,6 +35,8 @@
           </a>
         </div>
 
+        <div class="w-full h-[2px] bg-slate-500 rounded-sm"></div>
+        
         <div class="w-full flex flex-col gap-2 h-full">
           <a href="">
             <div class="w-full flex items-center gap-4 ps-8 pe-6 py-1 text-slate-500 font-medium hover:font-semibold hover:text-indigo-800 transition-all">
@@ -42,19 +44,19 @@
               <p class="leading-4 ">Dashboard</p>
             </div>
           </a>
-          <a href="">
+          <a href="/barang">
             <div class="w-full flex items-center gap-4 ps-8 pe-6 py-1 text-slate-500 font-medium hover:font-semibold hover:text-indigo-800 transition-all">
               <span class="icon-[fa-solid--layer-group] w-4"></span>
               <p class="leading-4 ">Stok barang</p>
             </div>
           </a>
-          <a href="">
+          <a href="/transaksi">
             <div class="w-full flex items-center gap-4 ps-8 pe-6 py-1 text-slate-500 font-medium hover:font-semibold hover:text-indigo-800 transition-all">
               <span class="icon-[ph--list-checks-fill] w-4"></span>
               <p class="leading-4 ">Transaksi</p>
             </div>
           </a>
-          <a href="">
+          <a href="/pelanggan">
             <div class="w-full flex items-center gap-4 ps-8 pe-6 py-1 text-slate-500 font-medium hover:font-semibold hover:text-indigo-800 transition-all">
               <span class="icon-[fluent--people-list-16-filled] w-4"></span>
               <p class="leading-4 ">Pelanggan</p>
@@ -100,11 +102,11 @@
             <div style="height: calc(100% - 36px);" class="w-full flex gap-4">
 
               <div class="min-w-32 flex flex-col h-full gap-2 py-4">
-                <button type="button" id="tab0" class="tab-btn w-full text-slate-50 bg-indigo-500 rounded text-center">
+                <button type="button" id="tab0" class="tab-btn w-full text-slate-50 bg-indigo-800 rounded text-center">
                   Semua
                 </button>
                 @foreach ($kategoris as $k)  
-                <button type="button" id="tab{{ $k->id }}" class="tab-btn w-full text-slate-50 bg-indigo-500 rounded text-center">
+                <button type="button" id="tab{{ $k->id }}" class="tab-btn w-full text-slate-50 bg-indigo-800 rounded text-center">
                     {{ $k->nama }}
                 </button>
                 @endforeach
@@ -155,15 +157,15 @@
               </div>
               <div class="flex w-full">
                 <p class="text-slate-800 text-xl font-medium w-1/2 leading-8">Nama</p>
-                <input type="text" name="nama" id="nama-pelanggan" class="h-7 text-indigo-800 leading-4 px-2 bg-indigo-100 w-1/2 rounded focus:border-none focus:outline-none">
+                <input type="text" name="nama" id="nama-pelanggan" class="h-7 text-slate-800 leading-4 px-2 bg-indigo-100 w-1/2 rounded focus:border-none focus:outline-none">
               </div>
               <div class="flex w-full">
                 <p class="text-slate-800 text-xl font-medium w-1/2 leading-8">Nomor HP</p>
-                <input type="text" name="hp" id="hp-pelanggan" class="h-7 text-indigo-800 leading-4 px-2 bg-indigo-100 w-1/2 rounded focus:border-none focus:outline-none">
+                <input type="text" name="hp" id="hp-pelanggan" class="h-7 text-slate-800 leading-4 px-2 bg-indigo-100 w-1/2 rounded focus:border-none focus:outline-none">
               </div>
               <div class="flex w-full">
                 <p class="text-slate-800 text-xl font-medium w-1/2 leading-8">Diskon (%)</p>
-                <input type="number" name="diskon" id="discount" class="h-7 text-indigo-800 leading-4 px-2 bg-indigo-100 w-1/2 rounded focus:border-none focus:outline-none">
+                <input type="number" name="diskon" id="discount" class="h-7 text-slate-800 leading-4 px-2 bg-indigo-100 w-1/2 rounded focus:border-none focus:outline-none">
               </div>
               <div class="flex w-full gap-1 justify-end items-center simpan-pelanggan">
                 <label for="simpan-pelanggan" class="text-slate-800">Simpan data pelanggan</label>
@@ -190,11 +192,11 @@
               </div>
               <div class="flex w-full">
                 <p class="text-slate-800 text-xl font-medium w-1/2 leading-8">Diterima</p>
-                <input type="number" name="diterima" id="amountReceived" step="500" class="h-7 text-indigo-800 leading-4 px-2 bg-indigo-100 w-1/2  rounded focus:border-none focus:outline-none">
+                <input type="number" name="diterima" id="amountReceived" step="500" class="h-7 text-slate-800 leading-4 px-2 bg-indigo-100 w-1/2  rounded focus:border-none focus:outline-none">
               </div>
               <div class="flex w-full">
                 <p class="text-slate-800 text-xl font-medium w-1/2 leading-8">Kembali</p>
-                <input readonly type="number" name="kembali" id="changeAmount" class="h-7 text-indigo-800 leading-4 px-2 bg-indigo-100 w-1/2 rounded focus:border-none focus:outline-none">
+                <input readonly type="number" name="kembali" id="changeAmount" class="h-7 text-slate-800 leading-4 px-2 bg-indigo-100 w-1/2 rounded focus:border-none focus:outline-none">
               </div>
             </div>
           </div>
@@ -212,8 +214,8 @@
             </div>
           </div>
           <div class="w-full flex gap-2">
-            <button type="submit" value="pending" name="submit" class="w-6/12 p-2 leading-4 font-semibold rounded-lg bg-red-600 text-slate-50">Pending</button>
-            <button type="submit" value="bayar" name="submit" class="w-6/12 p-2 leading-4 font-semibold rounded-lg bg-yellow-600 text-slate-50">Bayar</button>
+            <button type="submit" value="pending" name="submit" class="w-6/12 p-2 leading-4 font-semibold rounded-lg bg-yellow-500 text-slate-50">Pending</button>
+            <button type="submit" value="bayar" name="submit" class="w-6/12 p-2 leading-4 font-semibold rounded-lg bg-lime-600 text-slate-50">Bayar</button>
           </div>
         </form>
     </div>
@@ -293,16 +295,16 @@
             $tabContents.addClass('hidden');
 
             // Menghapus kelas aktif dari semua tab buttons
-            $tabs.removeClass('bg-indigo-500 text-slate-50')
-                 .addClass('text-indigo-500 hover:bg-indigo-500 hover:text-slate-50');
+            $tabs.removeClass('bg-indigo-800 text-slate-50')
+                 .addClass('text-indigo-800 hover:bg-indigo-800 hover:text-slate-50');
 
             // Menampilkan tab content yang sesuai
             const tabId = $tab.attr('id').replace('tab', 'tab-content');
             $(`#${tabId}`).removeClass('hidden');
 
             // Menambahkan kelas aktif pada tab button yang diklik
-            $tab.removeClass('text-indigo-500 hover:bg-indigo-500 hover:text-slate-50')
-                .addClass('bg-indigo-500 text-slate-50');
+            $tab.removeClass('text-indigo-800 hover:bg-indigo-800 hover:text-slate-50')
+                .addClass('bg-indigo-800 text-slate-50');
         });
 
         // Menampilkan tab pertama secara default
