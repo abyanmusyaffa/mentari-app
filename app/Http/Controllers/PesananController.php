@@ -120,6 +120,7 @@ class PesananController extends Controller
         $inputTransaksiId = null;
     
         if($request->input('bayar') || $request->input('pending')) {
+            $inputPelanggan = null;
             if ($request->input('nama')) {
                 $checkPelanggan = Pelanggan::where('nama', $request->input('nama'))
                                             ->where('hp', $request->input('hp'))
@@ -164,13 +165,17 @@ class PesananController extends Controller
         Pesanan::where('id', $request->input('id_pesanan'))
                         ->update([
                             'transaksi_id' => $inputTransaksiId ,
-                            'waktu' => $request->input('waktu'),
+                            'waktu' => $inputTransaksiId ? now() : $request->input('waktu'),
                             'nama_pelanggan' => $request->input('nama') ?? '',
                             'hp_pelanggan' => $request->input('hp') ?? '',
                             'status' => $inputTransaksiId ? 'Selesai' : $request->input('status')
                         ]);
 
-        return redirect('/pesanan');
+        if($request->input('page') === 'dashboard') {
+            return redirect('/');
+        } else {
+            return redirect('/pesanan');
+        }                
     }
 
     public function destroy($id)

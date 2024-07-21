@@ -37,7 +37,7 @@
         <div class="w-full h-[2px] bg-slate-500 rounded-sm"></div>
 
         <div class="w-full flex flex-col gap-2 h-full">
-          <a href="">
+          <a href="/">
             <div class="w-full flex items-center gap-4 ps-8 pe-6 py-1 text-slate-500 font-medium hover:font-semibold hover:text-indigo-800 transition-all">
               <span class="icon-[fa--dashboard] w-4"></span>
               <p class="leading-4">Dashboard</p>
@@ -61,7 +61,7 @@
               <p class="leading-4">Pelanggan</p>
             </div>
           </a>
-          <a href="">
+          <a href="/admin">
             <div class="w-full flex items-center gap-4 ps-8 pe-6 py-1 text-slate-500 font-medium hover:font-semibold hover:text-indigo-800 transition-all">
               <span class="icon-[mingcute--settings-2-fill] w-4"></span>
               <p class="leading-4">Administrator</p>
@@ -115,7 +115,7 @@
           <div class="w-full flex gap-2">
             <p class="text-indigo-800 text-2xl leading-6 font-medium w-full">Riwayat transaksi</p>
             <div class="relative">
-              <input type="text" id="search-transaksi" class="w-56 ps-10 pe-4 py-1 rounded-2xl bg-indigo-100 leading-5 text-slate-500 placeholder-slate-500 focus:border-none focus:outline-none" placeholder="Cari pesanan" />
+              <input type="text" id="search-transaksi" class="w-56 ps-10 pe-4 py-1 rounded-2xl bg-indigo-100 leading-5 text-slate-500 placeholder-slate-500 focus:border-none focus:outline-none" placeholder="Cari transaksi" />
               <div class="absolute left-4 top-[6px]">
                 <span class="icon-[mingcute--search-line] w-4 text-slate-500"></span>
               </div>
@@ -192,6 +192,7 @@
             </div>
           </div>
         </div>
+        
       </div>
     </div>
 
@@ -359,109 +360,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    {{-- <script>
-      $(document).ready(function() {
-        var currentPage = 1;
-        var itemsPerPage = 4;
-        var data = getData();
-        var totalItems = data.length;
-
-        function getData() {
-          var data = [];
-          $('#transaction-list button').each(function() {
-            var item = {
-              id: $(this).data('id'),
-              pelanggan: $(this).data('pelanggan') || '',
-              created: $(this).data('created'),
-              harga: parseFloat($(this).data('harga')),
-              metode: $(this).data('metode'),
-              status: $(this).data('status')
-            };
-            data.push(item);
-          });
-          return data;
-        }
-
-        function populateList(data, page) {
-          var list = $('#transaction-list');
-          list.empty();
-
-          var start = (page - 1) * itemsPerPage;
-          var end = start + itemsPerPage;
-          var paginatedData = data.slice(start, end);
-
-          paginatedData.forEach(function(item) {
-            var div = $('<button class="w-full flex py-1 px-4 rounded-lg text-indigo-800 hover:bg-indigo-50" data-id="' + item.id + '" data-pelanggan="' + item.pelanggan + '" data-created="' + item.created + '" data-harga="' + item.harga + '" data-metode="' + item.metode + '" data-status="' + item.status + '"></button>');
-            div.append('<div class="flex w-2/12 justify-center items-center gap-2"><p class="leading-[26px] font-semibold">#' + item.id + '</p></div>');
-            div.append('<div class="flex w-2/12 justify-center items-center gap-2"><p class="leading-[26px]">' + item.pelanggan + '</p></div>');
-            div.append('<div class="flex w-2/12 justify-center items-center gap-2"><p class="leading-[26px]">' + item.created + '</p></div>');
-            div.append('<div class="flex w-2/12 justify-center items-center gap-2"><p class="leading-[26px] font-semibold">Rp ' + item.harga.toLocaleString('id-ID') + '</p></div>');
-            div.append('<div class="flex w-2/12 justify-center items-center gap-2"><p class="leading-[26px]">' + item.metode + '</p></div>');
-            div.append('<div class="flex w-2/12 justify-center items-center gap-2"><div class="flex rounded-lg text-slate-50 gap-2 px-4 ' + (item.status === 'Lunas' ? 'bg-yellow-500' : 'bg-lime-500') + '"><span class="icon-[solar--' + (item.status === 'Lunas' ? 'check' : 'clock') + '-square-bold] w-3"></span><p class="text-xs">' + item.status + '</p></div></div>');
-            list.append(div);
-          });
-
-          $('#start-index').text(start + 1);
-          $('#end-index').text(Math.min(end, totalItems));
-          $('#total-data').text(totalItems);
-        }
-
-        function updatePaginationButtons() {
-          $('#prev-page').prop('disabled', currentPage === 1);
-          $('#next-page').prop('disabled', currentPage === Math.ceil(totalItems / itemsPerPage));
-        }
-
-        function sortData(column, order) {
-          data.sort(function(a, b) {
-            var aValue = a[column];
-            var bValue = b[column];
-
-            if (column === 'pelanggan') {
-              // Handle empty or null values
-              if (aValue === '' || aValue === null) return 1;
-              if (bValue === '' || bValue === null) return -1;
-            }
-
-            if (order === 'asc') {
-              return aValue > bValue ? 1 : -1;
-            } else {
-              return aValue < bValue ? 1 : -1;
-            }
-          });
-        }
-
-        $('.sortable').on('click', function() {
-          var column = $(this).data('sort');
-          var order = $(this).hasClass('asc') ? 'desc' : 'asc';
-          $('.sortable').removeClass('asc desc');
-          $(this).addClass(order);
-
-          sortData(column, order);
-          currentPage = 1;
-          populateList(data, currentPage);
-          updatePaginationButtons();
-        });
-
-        $('#prev-page').on('click', function() {
-          if (currentPage > 1) {
-            currentPage--;
-            populateList(data, currentPage);
-            updatePaginationButtons();
-          }
-        });
-
-        $('#next-page').on('click', function() {
-          if (currentPage < Math.ceil(totalItems / itemsPerPage)) {
-            currentPage++;
-            populateList(data, currentPage);
-            updatePaginationButtons();
-          }
-        });
-
-        populateList(data, currentPage);
-        updatePaginationButtons();
-      });
-    </script> --}}
     {{-- Sort, Live Search, Pagination --}}
     <script>
       $(document).ready(function() {

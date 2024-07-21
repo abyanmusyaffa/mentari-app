@@ -12,6 +12,7 @@ class PelangganController extends Controller
     public function index(): View
     {
         return view('/pelanggan', [
+            'totalPelanggan' => Pelanggan::count(),
             'pelanggans' => Pelanggan::latest()->get(),
         ]);
     }

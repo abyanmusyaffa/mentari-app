@@ -36,7 +36,7 @@
         <div class="w-full h-[2px] bg-slate-500 rounded-sm"></div>
 
         <div class="w-full flex flex-col gap-2 h-full">
-          <a href="">
+          <a href="/">
             <div class="w-full flex items-center gap-4 ps-8 pe-6 py-1 text-slate-500 font-medium hover:font-semibold hover:text-indigo-800 transition-all">
               <span class="icon-[fa--dashboard] w-4"></span>
               <p class="leading-4">Dashboard</p>
@@ -60,7 +60,7 @@
               <p class="leading-4">Pelanggan</p>
             </div>
           </a>
-          <a href="">
+          <a href="/admin">
             <div class="w-full flex items-center gap-4 ps-8 pe-6 py-1 text-slate-500 font-medium hover:font-semibold hover:text-indigo-800 transition-all">
               <span class="icon-[mingcute--settings-2-fill] w-4"></span>
               <p class="leading-4">Administrator</p>
