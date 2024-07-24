@@ -2,22 +2,10 @@
 
 <!doctype html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link href="./src/style.css" rel="stylesheet">
-  @vite('resources/css/app.css')
-  <title>Mentari | Penjualan</title>
-  <style>
-    .shadow-mentari::-webkit-scrollbar, .pelanggan::-webkit-scrollbar {
-        width: 0;
-      }
-  </style>
-</head>
+<x-head title="Penjualan" />
 <body class="font-baloo">
   <div class="h-screen w-screen flex">
-    <div class="w-[240px] h-full py-10 px-6 flex flex-col gap-6 items-center">
+    {{-- <div class="w-[240px] h-full py-10 px-6 flex flex-col gap-6 items-center">
         <img src="./img/mentari.svg" width="140" alt="">
 
         <div class="w-full flex flex-col gap-2">
@@ -86,7 +74,8 @@
             </form>
           </div>
         </div>
-    </div>
+    </div> --}}
+    <x-menu />
     <div style="width: calc(100vw - 240px);" class="h-full bg-slate-100 rounded-s-[40px] p-6 gap-6 flex">
         <div class="w-7/12 h-full p-4 rounded-2xl bg-white flex flex-col justify-between">
             <div class="w-full flex">
@@ -423,7 +412,6 @@
         });
     
         $btn.on('click', function() {
-
             $modal.removeClass('hidden');
         });
 
@@ -604,46 +592,6 @@
 
 
   {{-- Checkbox --}}
-  {{-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Menangani perubahan pada checkbox di tab semua barang
-        const semua = document.querySelectorAll('.semua-barang');
-        semua.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                const dataId = checkbox.getAttribute('data-id');
-                const relatedCheckboxes = document.querySelectorAll(`input[data-id="${dataId}"]`);
-                relatedCheckboxes.forEach(relatedCheckbox => {
-                    relatedCheckbox.checked = checkbox.checked;
-                });
-            });
-        });
-
-        // Menangani perubahan pada checkbox di tab kategori
-        const kategori = document.querySelectorAll('.kategori-barang');
-        kategori.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                const dataId = checkbox.getAttribute('data-id');
-                const relatedCheckboxes = document.querySelectorAll(`input[data-id="${dataId}"]`);
-                relatedCheckboxes.forEach(relatedCheckbox => {
-                    relatedCheckbox.checked = checkbox.checked;
-                });
-            });
-        });
-    });
-  </script> --}}
-  {{-- <script>
-    $(document).ready(function () {
-        $('.semua-barang').on('change', function () {
-            const dataId = $(this).data('id');
-            $(`input[name="barang${dataId}"]`).prop('checked', $(this).prop('checked'));
-        });
-
-        $('.kategori-barang').on('change', function () {
-            const dataId = $(this).data('id');
-            $(`input[name="barang${dataId}"]`).prop('checked', $(this).prop('checked'));
-        });
-    });
-  </script> --}}
   <script>
     $(document).ready(function () {
       function syncCheckboxes(dataId, isChecked) {

@@ -1,17 +1,6 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./src/style.css" rel="stylesheet">
-  @vite('resources/css/app.css')
-  <title>Mentari | Login</title>
-  <style>
-    .shadow-mentari::-webkit-scrollbar {
-        width: 0;
-      }
-  </style>
-</head>
+<x-head title="Login" />
 <body class="font-baloo">
     <div class="h-screen w-screen flex justify-center items-center">
         <form action="/auth" method="post">

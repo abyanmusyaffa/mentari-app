@@ -18,10 +18,17 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'email',
         'username',
         'password',
         'image',
+        'role',
     ];
+
+    protected $attributes = [
+        'image' => 'default_image.jpg',
+    ];
+    
 
     /**
      * The attributes that should be hidden for serialization.

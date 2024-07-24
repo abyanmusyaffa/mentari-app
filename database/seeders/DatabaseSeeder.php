@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'username' => 'mon',
             'name' => 'Abyan Aufa Alif Musyaffa',
+            'role' => 'admin',
             'password' => Hash::make('123')
         ]);
     }

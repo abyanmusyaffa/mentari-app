@@ -1,22 +1,10 @@
 {{-- @dd($dailyStatistics) --}}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="./src/style.css" rel="stylesheet" />
-    @vite('resources/css/app.css')
-    <title>Mentari | Dashboard</title>
-    <style>
-      .shadow-mentari::-webkit-scrollbar, .list-pesanan::-webkit-scrollbar, .pelanggan::-webkit-scrollbar, .pelanggan-bayar::-webkit-scrollbar {
-        width: 0;
-      }
-    </style>
-  </head>
+  <x-head title="Dashboard" />
   <body class="font-baloo">
     <div class="h-screen w-screen flex">
-      <div class="w-[240px] h-full py-10 px-6 flex flex-col gap-6 items-center">
+      {{-- <div class="w-[240px] h-full py-10 px-6 flex flex-col gap-6 items-center">
         <img src="./img/mentari.svg" width="140" alt="" />
 
         <div class="w-full flex flex-col gap-2">
@@ -84,8 +72,9 @@
             </form>
           </div>
         </div>
-      </div>
-
+      </div> --}}
+      <x-menu />
+      
       <div style="width: calc(100vw - 240px)" class="h-full bg-slate-100 rounded-s-[40px] p-6 gap-6 flex flex-col">
 
         <div class="w-full h-1/2 flex gap-6">
